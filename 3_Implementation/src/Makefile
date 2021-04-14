@@ -1,4 +1,4 @@
-SRC= C:/Users/shami/Documents/LTTSminiproject/src/foodOrder.c
+SRC= C:/Users/shami/Documents/LTTSminiproject/MiniProject_C/3_Implementation/src/foodOrder.c
 
 PROJ=foodOrder.exe
 
@@ -10,3 +10,5 @@ run: $(PROJ)
 
 clean:
 	 rm -rf $(PROJ) 
+
+
