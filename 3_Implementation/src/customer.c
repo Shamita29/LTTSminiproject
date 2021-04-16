@@ -431,11 +431,11 @@ void details()
   scanf("%s",address);
  FILE *cust;
   cust = fopen("order.txt","a");
-  fprintf(cust,"Order Placed By : %s %s\nPhone number : %lld\n",fname,phone);
+  fprintf(cust,"Order Placed By : %s \nPhone number : %lld\n",fname,phone);
   fclose(cust);
 
   
   printf("\n\nThanks for the order! \n\nPress Any To The Main page.");
-  if(getch())
+  if(getchar())
   customer();
 }
