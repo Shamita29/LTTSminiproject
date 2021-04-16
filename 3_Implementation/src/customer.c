@@ -230,7 +230,7 @@ void veg()
   else
   {
     printf(" Re-enter THe Correct Option\n\n");
-    if(getch())
+    if(getchar())
     veg();
   }
 }
