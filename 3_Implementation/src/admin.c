@@ -64,7 +64,7 @@ void admin()
 		}
 		fclose(list);
 		printf(" Press ENTER to return to main menu");
-      if(getch()==13)
+      if(getc()==13)
       admin();
 	}
 	else if(n==4)
