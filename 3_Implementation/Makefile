@@ -56,10 +56,6 @@ test:$(BUILD)
 	./$(TEST_OUTPUT)
 
 
-ccheck:
-  cppcheck --enable=all main.c $(SRC) $(INC)
-
-
 # Create new build folder if not present
 $(BUILD):
 	mkdir build
