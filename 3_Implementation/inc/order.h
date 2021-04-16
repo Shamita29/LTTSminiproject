@@ -3,6 +3,9 @@
 #include<string.h>
 #include<stdlib.h>
 
+#ifndef ORDER_H
+#define ORDER_H
+
 
 void administration();
 void customer();
@@ -37,3 +40,4 @@ int again;
 int quantity;
 double total=0;
 int t;
+#endif

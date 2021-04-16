@@ -1,56 +1,49 @@
-#include"unity.h"
-#include "order.h"
+#include"/unity/unity.h"
+#include "/src/order.h"
 /* Required by the unity test framework */
 void setUp(){}
 /* Required by the unity test framework */
 void tearDown(){}
-
-struct employee
-{
-
-	char name[30];
-	int id;
-	int dd; int mm; int yy;
-	int YOJ;
-	char place[20];
-	float salary;
-	char department[20];
-	
-	int quantity;
-}emp;
+int status=0;
+void test_file(void);
+//void test_checkid(void);
+void test_getdata(void);
 
 
-void testDetails(void)
-{
-strcpy(emp.name,"Shamita");
-strcpy(emp.id,"01");
-strcpy(emp.dd,"31");
-strcpy(emp.mm,"02");
-strcpy(emp.yy,"2021");
-
-strcpy(emp.YOJ,"2021");
-strcpy(emp.place,"Hubli");
-strcpy(emp.department,"Food");
-
-
-TEST_ASSERT_EQUAL_STRING("shamiita",emp.name);
-TEST_ASSERT_EQUAL_STRING("01",emp.id);
-TEST_ASSERT_EQUAL_STRING("2021",emp.YOJ);
-TEST_ASSERT_EQUAL_STRING("dharwad",emp.place);
-TEST_ASSERT_EQUAL_STRING("Food",emp.department);
-
-}
 
 int main()
-{
+{   
     /* Initiate the Unity Test Framework */
     UNITY_BEGIN();
 
     /* Run Test functions */
-    RUN_TEST(test_details);
+    RUN_TEST(test_getdata);
+    RUN_TEST(test_file);
+    //RUN_TEST(test_admin);
     
-    
-
-    /* Close the Unity Test Framework */
     return UNITY_END();
 }
+
+
+void test_file()
+{    
+	FILE *fp;
+	fp=fopen("record1.txt","r");
+     if(fp == NULL)
+          TEST_ASSERT_EQUAL(1,status); //file has no contents in it
+     else
+      	 TEST_ASSERT_EQUAL(0,status);
+}
+
+void test_getdata(){
+
+ int ID=2; //assuming this is the value of employee ID entered  by admin to check
+ int ID2=1; //assuming this is the right ID
+
+  TEST_ASSERT_EQUAL_INT_MESSAGE(1, ID2, "Test pass:");
+
+ //this will fail
+  //TEST_ASSERT_EQUAL_INT_MESSAGE(1, ID, "Test Failed: \"ID\" should be 1");
+}
+
+

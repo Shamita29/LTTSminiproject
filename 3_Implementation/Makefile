@@ -1,48 +1,66 @@
-PROJECT_NAME = FOODORD
+BUILD = Build
+
+PROJ_NAME = foodie
+
+EXEC = exe
+INC = inc/order.h\
+      inc/admin.h\
+      inc/cust.h\
+      inc/types.h
+
+INCLUDE_LIBS = unity/unity.h\
+               unity/unity_internals.h
 
 
-SRC = src/foodOrder.c
+SRC = src/admin.c\
+      src/customer.c\
+      src/records.c
 
-TSTSRC= test/ordertest.c\
-        unity/unity.c
-
-INC = inc/cust.h\
-      inc/order.h\
-      unity/unity.h\
-      unity/unity_internals.h
+TEST_SRC = test/ordertest.c\
+           unity/unity.c
 
 INC	= -Iinc\
-     -Iunity\
-
-INCLUDE_LIBS = -lcunit
+-Iunity\
 
 
-PROJ=foodOrder.exe
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+    EXEC = out
+   endif
+endif
 
-BUILD = build
+PROJECT_OUTPUT= $(PROJ_NAME).out
 
-TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
+TEST_OUTPUT = Test_$(PROJECT_NAME).out
 
-PROJECT_OUTPUT= $(BUILD)/$(PROJECT_NAME).out
+all:$(SRC) $(BUILD)
+	gcc main.c $(SRC) $(INC) -o $(PROJECT_OUTPUT)
 
-DOCUMENTATION_OUTPUT = documentation/html
-
-all: $(SRC) $(BUILD)
-	gcc $(SRC) $(INC) -o $(PROJECT_OUTPUT)
-
-run:$(PROJECT_NAME)
-	./$(PROJECT_OUTPUT).out
-
-test:$(BUILD)
-	gcc $(TEST_SRC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
-	./$(TEST_OUTPUT)
+run: $(PROJ_NAME)
+	   ./$(PROJECT_OUTPUT)
 
 
+# Document the code using Doxygen
 doc:
 	make -C ./documentation
 
-clean:
-	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT)
+# Build and run the unit tests
+test:$(BUILD)
+	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
+	./$(TEST_OUTPUT)
 
 
+ccheck:
+  cppcheck --enable=all main.c $(SRC) $(INC)
+
+
+# Create new build folder if not present
+$(BUILD):
+	mkdir build
 
