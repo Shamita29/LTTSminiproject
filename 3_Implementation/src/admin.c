@@ -64,7 +64,7 @@ void admin()
 		}
 		fclose(list);
 		printf(" Press ENTER to return to main menu");
-      if(getc()==13)
+      if(getchar()==13)
       admin();
 	}
 	else if(n==4)
@@ -74,7 +74,7 @@ void admin()
 	else
 	{
 		printf("Please Re-enter The Correct input");
-		if(getch())
+		if(getchar())
 		admin();
 	}
 }
