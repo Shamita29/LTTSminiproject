@@ -14,7 +14,7 @@ void addrecord()
 		printf("\n\n");
 		printf("The Record Is Successfully Saved ! !\n\n");
 		printf("Save any more?(Y / N): ");
-		if(getc()=='n')
+		if(getchar()=='n')
 	    	admin();
 		else
 	    	system("cls");
@@ -42,7 +42,7 @@ int getdata()
 	{
 		printf("\n\n");
 		printf("\a        The Employee Record Already Exists !!!\a");
-		getch();
+		getchar();
 		menu();
 		return 0;
 	}
