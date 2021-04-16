@@ -14,7 +14,7 @@ void addrecord()
 		printf("\n\n");
 		printf("The Record Is Successfully Saved ! !\n\n");
 		printf("Save any more?(Y / N): ");
-		if(getch()=='n')
+		if(getc()=='n')
 	    	admin();
 		else
 	    	system("cls");
