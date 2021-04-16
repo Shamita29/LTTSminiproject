@@ -108,7 +108,7 @@ int getdata()
   else
   {
   	printf("Enter valid details\n Press enter to retype or X to get back to menu");
-    if(getch()==13) 
+    if(getchar()==13) 
   	 addrecord();
   	else
   		admin();
@@ -136,7 +136,7 @@ void viewrecord()
       
       fclose(fp);
       printf(" Press ENTER to return to main menu");
-      if(getch()==13) 
+      if(getchar()==13) 
       admin();
       
 }
