@@ -1,4 +1,4 @@
-name: Cppcheck
+name: static code - Cppcheck
 
 on:
   push:
@@ -16,4 +16,4 @@ jobs:
     - name: Install cppcheck
       run: sudo apt -y install cppcheck
     - name: Run cppcheck
-      run: make ccheck -C 3_Implementation
+      run: cppcheck 3_Implementation
