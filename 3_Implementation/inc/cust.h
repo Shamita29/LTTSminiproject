@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<conio.h>
 
 #ifndef CUST_H
 #define CUST_H
